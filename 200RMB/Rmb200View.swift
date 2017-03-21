@@ -12,22 +12,20 @@ class Rmb200View: UIView {
 
     override func draw(_ rect: CGRect) {
         // Drawing code
-        
-        guard let context = UIGraphicsGetCurrentContext() else {
-            return
-        }
-        
         if let image = UIImage(named: "1") {
             image.draw(in: rect)
         }
         
-        context.setLineCap(.square)
-        context.setLineWidth(5)
-        context.setStrokeColor(gray: 1, alpha: 1)
+        let lineLayer = CAShapeLayer()
+        lineLayer.lineWidth = 1
+        lineLayer.strokeColor = UIColor.red.cgColor
         
-        context.beginPath()
-        context.move(to: CGPoint(x: 0, y: 0))
-        context.addLine(to: CGPoint(x: 300, y: 300))
-        context.strokePath()
+        let linePath = UIBezierPath()
+        linePath.move(to: CGPoint.zero)
+        linePath.addLine(to: CGPoint(x: 300, y: 300))
+        
+        lineLayer.path = linePath.cgPath
+        
+        layer.addSublayer(lineLayer)
     }
 }
