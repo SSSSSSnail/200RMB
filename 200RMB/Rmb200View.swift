@@ -16,6 +16,7 @@ class Rmb200View: UIView {
             image.draw(in: rect)
         }
         
+        
         let lineLayer = CAShapeLayer()
         lineLayer.lineWidth = 1
         lineLayer.strokeColor = UIColor.red.cgColor

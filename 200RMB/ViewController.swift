@@ -11,10 +11,12 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var scrollContentView: UIView!
+    fileprivate let lineLayer = CAShapeLayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        scrollContentView.layer.addSublayer(lineLayer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,5 +33,7 @@ extension ViewController: UIScrollViewDelegate {
         return scrollContentView
     }
     
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        self.lineLayer.setNeedsDisplay()
+    }
 }
-
